@@ -3,8 +3,11 @@ import './App.css';
 
 function App() {
   function MyButton() {
+    function handleClick(){
+      alert("I have been clicked.");
+    }
     return (
-      <button>
+      <button onClick={handleClick}>
         I'm a button
       </button>
     );
