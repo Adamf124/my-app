@@ -7,11 +7,11 @@ function App() {
   function MyButton() {
     const [count, setCount] = useState(0)
     function handleClick(){
-      alert("I have been clicked.");
+      setCount(count + 1)
     }
     return (
       <button onClick={handleClick}>
-        I'm a button
+        I'm a button that was clicked {count} times
       </button>
     );
   }
