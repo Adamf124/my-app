@@ -5,6 +5,7 @@ import { useState } from 'react';
 function App() {
 
   function MyButton() {
+    const [count, setCount] = useState(0)
     function handleClick(){
       alert("I have been clicked.");
     }
@@ -14,7 +15,7 @@ function App() {
       </button>
     );
   }
-  
+
   return (
     <div className="App">
       <header className="App-header">
