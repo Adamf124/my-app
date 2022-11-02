@@ -42,3 +42,7 @@ const [count, setCount] = useState(0)
 }
 
 export default App;
+
+
+//End of Quick start guide 
+
