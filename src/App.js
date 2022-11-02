@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
- 
+ import FilterableProductTable from './components/FilterableProductTable';
 
 function MyButton({ count, onClick }) {
     
@@ -36,6 +36,7 @@ const [count, setCount] = useState(0)
         >
           Learn React
         </a>
+        <FilterableProductTable />
       </header>
     </div>
   );
