@@ -70,7 +70,9 @@ function ProductCategoryRow({ category }) {
   }
   
   function FilterableProductTable({ products }) {
+    // eslint-disable-next-line
     const [filterText, setFilterText] = useState('');
+    // eslint-disable-next-line
     const [inStockOnly, setInStockOnly] = useState(false);
     //Hook into the render cycle using useState() Hook
     return (
