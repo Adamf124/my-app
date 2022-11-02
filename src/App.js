@@ -3,20 +3,20 @@ import './App.css';
 import { useState } from 'react';
  
 
-function MyButton() {
-    const [count, setCount] = useState(0)
-    function handleClick(){
-      setCount(count + 1)
-    }
+function MyButton({ count, onClick }) {
+    
     return (
-      <button onClick={handleClick}>
+      <button onClick={onClick}>
         I'm a button that was clicked {count} times
       </button>
     );
   }
 
 function App() {
-
+const [count, setCount] = useState(0)
+    function handleClick(){
+      setCount(count + 1)
+    }
  
 
   return (
@@ -26,8 +26,8 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <MyButton />
-        <MyButton />
+      <MyButton count={count} onClick={handleClick} />
+      <MyButton count={count} onClick={handleClick} />
         <a
           className="App-link"
           href="https://reactjs.org"
