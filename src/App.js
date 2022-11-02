@@ -1,10 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
+ 
 
-function App() {
-
-  function MyButton() {
+function MyButton() {
     const [count, setCount] = useState(0)
     function handleClick(){
       setCount(count + 1)
@@ -16,6 +15,10 @@ function App() {
     );
   }
 
+function App() {
+
+ 
+
   return (
     <div className="App">
       <header className="App-header">
@@ -23,6 +26,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <MyButton />
         <MyButton />
         <a
           className="App-link"
