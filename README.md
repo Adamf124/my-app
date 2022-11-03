@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+This is my run-through of the React tutorial beta. Initially, I thought this was going to be another tic tac toe rerun, but it is seemingly more in-depth than first meets the eye.  
+Below is the boilerplate description for a React project. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
