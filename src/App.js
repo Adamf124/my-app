@@ -1,24 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
- import FilterableProductTable from './components/FilterableProductTable';
-
-function MyButton({ count, onClick }) {
-    
-    return (
-      <button onClick={onClick}>
-        I'm a button that was clicked {count} times
-      </button>
-    );
-  }
+import FilterableProductTable from './components/FilterableProductTable';
 
 function App() {
-const [count, setCount] = useState(0)
-    function handleClick(){
-      setCount(count + 1)
-    }
- 
-
   return (
     <div className="App">
       <header className="App-header">
@@ -26,8 +11,7 @@ const [count, setCount] = useState(0)
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-      <MyButton count={count} onClick={handleClick} />
-      <MyButton count={count} onClick={handleClick} />
+
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -36,7 +20,6 @@ const [count, setCount] = useState(0)
         >
           Learn React
         </a>
-        <FilterableProductTable />
       </header>
     </div>
   );
