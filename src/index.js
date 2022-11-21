@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 class Square extends React.Component {
+  constructor(props){
+    //always start with super props in React constructor
+    super(props);
+    this.state = {
+      value: null,
+    };
+  }
   render() {
     return (
       <button className="square" onClick={ ()=>{console.log('I HAVE BEEN CLICKED!');} }>
