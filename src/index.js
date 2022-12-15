@@ -20,6 +20,9 @@ class Board extends React.Component {
   }
   handleClick(i) {
     const squares = this.state.squares.slice();
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
     //Note: Call .slice() to create a copy of the squares array to modify instead of modifying the existing array.
     squares[i] = this.state.xIsNext ? 'X' : 'O'
     this.setState({
@@ -37,7 +40,14 @@ class Board extends React.Component {
   }
 
   render() {
-    const status = 'Current player: ' + (this.state.xIsNext ? 'X' : 'O');
+    const winner = calculateWinner(this.state.squares);
+    let status;
+    if(winner) {
+      status = 'Winner: ' + winner
+    }else{
+      status = 'Current player: ' + (this.state.xIsNext ? 'X' : 'O');
+    }
+    //const status = 'Current player: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
       <div>
@@ -63,6 +73,14 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
+  constructor(props) {
+    //All React component classes that have a constructor should start with a super(props) call.
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+      xIsNext: true
+    }
+  }
   render() {
     return (
       <div className="game">
