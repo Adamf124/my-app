@@ -14,7 +14,8 @@ class Board extends React.Component {
     //All React component classes that have a constructor should start with a super(props) call.
     super(props);
     this.state = {
-      squares: Array(9).fill(null)
+      squares: Array(9).fill(null),
+      xIsNext: true
     }
   }
   handleClick(i) {
