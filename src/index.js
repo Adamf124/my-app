@@ -43,6 +43,16 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
+  constructor(props) {
+    //All React component classes that have a constructor should start with a super(props) call.
+    super(props);
+    this.state = {
+      history: [{
+        squares: Array(9).fill(null),
+      }],
+      xIsNext: true,
+    };
+  }
   handleClick(i) {
     const history = this.state.history;
     const current = history[history.length - 1];
@@ -61,14 +71,6 @@ class Game extends React.Component {
       xIsNext: !this.state.xIsNext
     })
   }
-  constructor(props) {
-    //All React component classes that have a constructor should start with a super(props) call.
-    super(props);
-    this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true
-    }
-  }
   render() {
     const history = this.state.history;
     const current = history[history.length - 1];
@@ -79,12 +81,11 @@ class Game extends React.Component {
       'Go to move #' + move :
       'Go to game start';
       return ( 
-        <li>
-          <button onClick={() =>
-        this.jumpTo(move)}></button>
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
       );
-    })
+    });
     let status;
     if (winner) {
       status = 'Winner: ' + winner;
@@ -97,7 +98,7 @@ class Game extends React.Component {
           <Board 
           squares={current.squares}
           onClick={(i) => this.handleClick(i)}
-/>
+          />
         </div>
         <div className="game-info">
           <div>{status}</div>
