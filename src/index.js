@@ -50,6 +50,7 @@ class Game extends React.Component {
       history: [{
         squares: Array(9).fill(null),
       }],
+      stepNumber: 0,
       xIsNext: true,
     };
   }
@@ -84,6 +85,7 @@ class Game extends React.Component {
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
+        //Keys do not need to be globally unique; they only need to be unique between components and their siblings.
       );
     });
     let status;
