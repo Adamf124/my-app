@@ -10,30 +10,18 @@ function Square(props){
     );
     }
 class Board extends React.Component {
-  handleClick(i) {
-    const squares = this.state.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
-      return;
-    }
-    //Note: Call .slice() to create a copy of the squares array to modify instead of modifying the existing array.
-    squares[i] = this.state.xIsNext ? 'X' : 'O'
-    this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext
-    })
-  }
   renderSquare(i) {
     return (
-    <Square 
-    value={this.props.squares[i]}
-    onClick= {() => this.props.onClick(i)}
-    />
-    );
-  }
-
-  render() {
-    return (
-      <div>
+      <Square 
+      value={this.props.squares[i]}
+      onClick= {() => this.props.onClick(i)}
+      />
+      );
+    }
+    
+    render() {
+      return (
+        <div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -55,6 +43,24 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
+  handleClick(i) {
+    const history = this.state.history;
+    const current = history[history.length - 1];
+    const squares = current.squares.slice();
+  
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+    //Note: Call .slice() to create a copy of the squares array to modify instead of modifying the existing array.
+    squares[i] = this.state.xIsNext ? 'X' : 'O'
+    this.setState({
+      history: history.concat([{
+        //concat for immutability over push
+        squares: squares,
+      }]),      
+      xIsNext: !this.state.xIsNext
+    })
+  }
   constructor(props) {
     //All React component classes that have a constructor should start with a super(props) call.
     super(props);
@@ -67,6 +73,18 @@ class Game extends React.Component {
     const history = this.state.history;
     const current = history[history.length - 1];
     const winner = calculateWinner(current.squares)
+
+    const moves = history.map((step, move) => {
+      const desc = move ? 
+      'Go to move #' + move :
+      'Go to game start';
+      return ( 
+        <li>
+          <button onClick={() =>
+        this.jumpTo(move)}></button>
+        </li>
+      );
+    })
     let status;
     if (winner) {
       status = 'Winner: ' + winner;
@@ -83,7 +101,7 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{/* TODO */}</ol>
+          <ol>{moves}</ol>
         </div>
       </div>
     );
