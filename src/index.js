@@ -62,6 +62,7 @@ class Game extends React.Component {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
+    //uh oh
     //Note: Call .slice() to create a copy of the squares array to modify instead of modifying the existing array.
     squares[i] = this.state.xIsNext ? 'X' : 'O'
     this.setState({
